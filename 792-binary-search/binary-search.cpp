@@ -8,7 +8,7 @@ public:
         if(nums[mid]==target){
             return mid;
         }
-        else if(nums[mid]<=target){
+        else if(nums[mid]<target){
             return binarySearch(nums,target,mid+1,end);
         }
         else{
