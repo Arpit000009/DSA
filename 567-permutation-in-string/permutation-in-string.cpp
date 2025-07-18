@@ -3,33 +3,28 @@ public:
     bool checkInclusion(string s1, string s2) {
         int n = s1.size(), m = s2.size();
         if (n > m) return false;
-
-        // Frequency map of s1
-        map<char, int> mpp1;
-        for (char c : s1) {
-            mpp1[c]++;
+        
+        map<char,int>mpp;
+        for(int i=0;i<s1.size();i++){
+            mpp[s1[i]]++;
         }
 
-        // Initial window map
-        map<char, int> mpp2;
-        for (int i = 0; i < n; i++) {
-            mpp2[s2[i]]++;
+        map<char, int> mp;
+        for (int i = 0; i < s1.size(); i++) {
+            mp[s2[i]]++;
         }
 
-        // Check first window
-        if (mpp1 == mpp2) return true;
+        if(mp==mpp) return true;
 
-        // Slide the window
-        for (int i = n; i < m; i++) {
-            mpp2[s2[i]]++;             // add current char
-            mpp2[s2[i - n]]--;         // remove old char from window
+        for(int i=s1.size();i<s2.size();i++){
+             mp[s2[i]]++;           
+            mp[s2[i - s1.size()]]--;
 
-            if (mpp2[s2[i - n]] == 0)  // clean up 0 count
-                mpp2.erase(s2[i - n]);
+            if (mp[s2[i - s1.size()]] == 0) 
+            mp.erase(s2[i - s1.size()]);
 
-            if (mpp1 == mpp2) return true;
+            if(mpp==mp) return true;
         }
-
         return false;
     }
 };
