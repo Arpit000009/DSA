@@ -13,10 +13,10 @@ public:
             }
 
             if(num<2){
-                ss += s[i-1];
+                ss +=s[i-1];
             }
         }
-        ss += s.back();
+        ss = ss + s.back();
         return ss;
     }
 };
