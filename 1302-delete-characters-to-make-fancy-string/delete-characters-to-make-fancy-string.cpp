@@ -1,24 +1,22 @@
 class Solution {
 public:
     string makeFancyString(string s) {
-        string result = "";
-        int count = 1;
+        string ss = "";
 
-        for (int i = 1; i < s.size(); ++i) {
-            if (s[i] == s[i - 1]) {
-                count++;
-            } else {
-                count = 1;
+        int num=0;
+        for(int i=1;i<s.size();i++){
+            if(s[i]==s[i-1]){
+                num++;
+            }
+            else{
+                num = 0;
             }
 
-            if (count < 3) {
-                result += s[i - 1];
+            if(num<2){
+                ss += s[i-1];
             }
         }
-
-        // Always add the last character
-        result += s.back();
-
-        return result;
+        ss += s.back();
+        return ss;
     }
 };
