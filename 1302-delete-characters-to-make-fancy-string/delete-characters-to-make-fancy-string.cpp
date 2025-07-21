@@ -16,7 +16,7 @@ public:
                 ss +=s[i-1];
             }
         }
-        ss = ss + s.back();
+        ss += s.back();
         return ss;
     }
 };
