@@ -2,28 +2,29 @@ class Solution {
 public:
     int carFleet(int target, vector<int>& position, vector<int>& speed) {
         int n = position.size();
-        vector<pair<int,int>> cars(n);
-
-        // Pair position with speed
-        for(int i=0; i<n; i++){
-            cars[i] = {position[i], speed[i]};
+        vector<pair<int,int>>vec(n);
+        for(int i=0;i<n;i++){
+            vec[i] = {position[i],speed[i]};
         }
 
-        // Sort cars by starting position descending (closer to target first)
-        sort(cars.rbegin(), cars.rend());
+        sort(vec.rbegin(),vec.rend());
+
+        vector<double>time(n);
+
+        for(int i=0;i<n;i++){
+            time[i] = (double)(target-vec[i].first)/vec[i].second;
+        }
 
         int fleets = 0;
-        double last_time = 0.0;
+        double last_times = 0.0;
 
-        // Check from closest to farthest car
-        for(auto &car : cars){
-            double time = (double)(target - car.first) / car.second;
-            if(time > last_time){
+        for(double t:time){
+           
+            if(t>last_times){
                 fleets++;
-                last_time = time;  // update slowest fleet time
+                last_times = t;
             }
         }
-
         return fleets;
     }
 };
