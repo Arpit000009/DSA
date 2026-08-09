@@ -10,7 +10,7 @@ public:
         }
         int count = 0;
 
-        map<int,int>mpp;
+        unordered_map<int,int>mpp;
 
         for(int i=0;i<n;i++){
             if(prefix[i]==k){
