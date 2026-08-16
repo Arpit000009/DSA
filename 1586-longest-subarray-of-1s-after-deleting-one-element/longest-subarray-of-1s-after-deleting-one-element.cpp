@@ -11,19 +11,19 @@ public:
             if(nums[j]==0){
                 zeros++;
             }
-            if(zeros<=1){
-            len = j-i;
-
-            if(len>maxlen){
-                maxlen = len;
-            }
-            }
             while(zeros>1 && i<nums.size()){
                 if(nums[i]==0){
                     zeros--;
                 }
                 i++;
             }
+            
+            len = j-i;
+
+            if(len>maxlen){
+                maxlen = len;
+            }
+            
             j++;
         }
         return maxlen;
