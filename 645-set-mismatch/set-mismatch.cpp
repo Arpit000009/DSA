@@ -3,7 +3,7 @@ public:
     vector<int> findErrorNums(vector<int>& nums) {
         int n = nums.size();
 
-        map<int,int>mpp;
+        unordered_map<int,int>mpp;
 
         for(int i=1;i<=n;i++){
             mpp[i] = 0;
